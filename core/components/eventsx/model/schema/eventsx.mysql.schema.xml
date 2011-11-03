@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="eventsx" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM">
+
+    <object class="evxEvent" table="eventsx_events" extends="xPDOSimpleObject">
+        <field key="active" dbtype="int" precision="1" phptype="integer" null="false" default="0"/>
+        <field key="name" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="description" dbtype="text" phptype="string" null="false" default=""/>
+        <field key="startdate" dbtype="date" phptype="date" null="null"/>
+        <field key="enddate" dbtype="date" phptype="date" null="null"/>
+    </object>
+
+</model>
