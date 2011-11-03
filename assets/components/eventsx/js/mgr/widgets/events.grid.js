@@ -2,7 +2,7 @@ EventsX.grid.Events = function(config) {
     config = config || {};
     Ext.applyIf(config,{
         id: 'eventsx-grid-events'
-        ,url: Vacancies.config.connectorUrl
+        ,url: EventsX.config.connectorUrl
         ,baseParams: {
             action: 'mgr/event/getlist'
         }
@@ -104,12 +104,12 @@ Ext.extend(EventsX.grid.Events,MODx.grid.Grid,{
 });
 Ext.reg('eventsx-grid-events',EventsX.grid.Events);
 
-Vacancies.window.Event = function(config) {
+EventsX.window.Event = function(config) {
     config = config || {};
     Ext.applyIf(config,{
         id: 'eventsx-window-event'
         ,title: _('eventsx.event.new')
-        ,url: Vacancies.config.connectorUrl
+        ,url: EventsX.config.connectorUrl
         ,keys: []
         ,width: 600
         ,buttons: [{

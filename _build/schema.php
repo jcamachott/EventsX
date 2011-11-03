@@ -19,7 +19,7 @@ $builder = new modPackageBuilder($modx);
 // - the schema xml file
 $builder->buildSchema(COMPONENT_PATH.'/model/', COMPONENT_PATH.'/model/schema/eventsx.mysql.schema.xml');
 
-$modx->addPackage('vacancies', $modx->getOption('core_path').'components/eventsx/model/');
+$modx->addPackage('eventsx', $modx->getOption('core_path').'components/eventsx/model/');
 $manager = $modx->getManager();
 $manager->createObjectContainer('evxEvent');
 
