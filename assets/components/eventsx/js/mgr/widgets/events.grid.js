@@ -59,33 +59,30 @@ Ext.extend(EventsX.grid.Events,MODx.grid.Grid,{
         return true;
     }
     ,createEvent: function(btn,e) {
-        if (!this.EventWindow) {
-            this.EventWindow = MODx.load({
-                xtype: 'eventsx-window-event'
-                ,listeners: {
-                    'success': {fn:this.refresh,scope:this}
-                }
-            });
-        }
+        this.EventWindow = MODx.load({
+            xtype: 'eventsx-window-event'
+            ,listeners: {
+                'success': {fn:this.refresh,scope:this}
+            }
+        });
         this.EventWindow.show(e.target);
         this.EventWindow.setTitle(_('eventsx.events.new'));
         Ext.getCmp('eventsx-window-event-form-tabs').setActiveTab(0);
         Ext.getCmp('eventsx-window-event-form').form.reset();
     }
     ,updateEvent: function(btn,e) {
-        if (!this.EventWindow) {
-            this.EventWindow = MODx.load({
-                xtype: 'eventsx-window-event'
-                ,listeners: {
-                    'success': {fn:this.refresh,scope:this}
-                }
-            });
-        }
+        this.EventWindow = MODx.load({
+            xtype: 'eventsx-window-event'
+            ,listeners: {
+                'success': {fn:this.refresh,scope:this}
+            }
+        });
         this.EventWindow.show(e.target);
         this.EventWindow.setTitle(_('eventsx.event.update'));
         Ext.getCmp('eventsx-window-event-form-tabs').setActiveTab(0);
         Ext.getCmp('eventsx-window-event-form').form.reset();
         Ext.getCmp('eventsx-window-event-form').form.setValues(this.menu.record);
+        if (typeof Tiny != 'undefined') { MODx.loadRTE('eventdescription'); }
     }
     ,removeEvent: function() {
         MODx.msg.confirm({
@@ -106,12 +103,14 @@ Ext.reg('eventsx-grid-events',EventsX.grid.Events);
 
 EventsX.window.Event = function(config) {
     config = config || {};
+    this.ident = config.ident || Ext.id();
     Ext.applyIf(config,{
         id: 'eventsx-window-event'
         ,title: _('eventsx.event.new')
         ,url: EventsX.config.connectorUrl
         ,keys: []
-        ,width: 600
+        ,width: 750
+        ,closeAction: 'close'
         ,buttons: [{
             process: 'submit',
             text: _('save'),
@@ -122,7 +121,7 @@ EventsX.window.Event = function(config) {
                     frm.submit({
                         waitMsg: _('saving'),
                         success: function(form,action) {
-                            Ext.getCmp('eventsx-window-event').hide();
+                            Ext.getCmp('eventsx-window-event').close();
                             Ext.getCmp('eventsx-grid-events').refresh();
                         },
                         failure: function(form,action) {
@@ -149,7 +148,7 @@ EventsX.window.Event = function(config) {
                 ,id: 'eventsx-window-event-form-tabs'
                 ,defaults: {
                     layout: 'form'
-                    ,labelWidth: 150
+                    ,labelWidth: 100
                     ,autoHeight: true
                     ,hideMode: 'offsets'
                     ,bodyStyle: 'padding: 15px'
@@ -174,6 +173,7 @@ EventsX.window.Event = function(config) {
                             ,allowBlank: false
                         },{
                             xtype: 'textarea'
+                            ,id: 'eventdescription-'+this.ident
                             ,fieldLabel: _('eventsx.event.description')
                             ,name: 'description'
                             ,width: 300
@@ -192,11 +192,16 @@ EventsX.window.Event = function(config) {
                             ,format: MODx.config.manager_date_format
                         }
                     ]
+                },{
+                    title: _('eventsx.event.location')
                 }]
             }]
         }]
     });
     EventsX.window.Event.superclass.constructor.call(this,config);
+    this.on('activate',function() {
+        if (typeof Tiny != 'undefined') { MODx.loadRTE('eventdescription-' + this.ident); }
+    });
 };
 Ext.extend(EventsX.window.Event,MODx.Window);
 Ext.reg('eventsx-window-event',EventsX.window.Event);

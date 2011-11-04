@@ -6,6 +6,9 @@ if(!is_object($event)) {
 $event->fromArray($scriptProperties);
 
 if ($event->save()) {
+
+    $event = $event->toArray('', true);
+    unset($event['description']);
 	return $modx->error->success('', $event);
 }
 else {

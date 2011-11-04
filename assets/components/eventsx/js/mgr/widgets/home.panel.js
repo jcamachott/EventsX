@@ -4,7 +4,7 @@ EventsX.panel.Home = function(config) {
         border: false
         ,baseCls: 'modx-formpanel'
         ,items: [{
-            html: '<h2>'+_('eventsx.desc')+'</h2>'
+            html: '<h2>'+_('eventsx')+'</h2>'
             ,border: false
             ,cls: 'modx-page-header'
         },{
@@ -12,7 +12,7 @@ EventsX.panel.Home = function(config) {
             ,bodyStyle: 'padding: 10px'
             ,defaults: { border: false ,autoHeight: true }
             ,items: [{
-                title: _('eventsx')
+                title: _('eventsx.desc')
                 ,border: false
                 ,defaults: { autoHeight: true, border: false }
                 ,items: [{

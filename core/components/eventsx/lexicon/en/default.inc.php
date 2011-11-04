@@ -19,3 +19,4 @@ $_lang['eventsx.event.active'] = 'Active';
 $_lang['eventsx.event.description'] = 'Description';
 $_lang['eventsx.event.startdate'] = 'Start date';
 $_lang['eventsx.event.enddate'] = 'End date';
+$_lang['eventsx.event.location'] = 'Location';
