@@ -66,7 +66,7 @@ Ext.extend(EventsX.grid.Events,MODx.grid.Grid,{
             }
         });
         this.EventWindow.show(e.target);
-        this.EventWindow.setTitle(_('eventsx.events.new'));
+        this.EventWindow.setTitle(_('eventsx.event.new'));
         Ext.getCmp('eventsx-window-event-form-tabs').setActiveTab(0);
         Ext.getCmp('eventsx-window-event-form').form.reset();
     }
@@ -177,7 +177,7 @@ EventsX.window.Event = function(config) {
                             ,fieldLabel: _('eventsx.event.description')
                             ,name: 'description'
                             ,width: 300
-                            ,allowBlank: false
+                            ,allowBlank: true
                         },{
                             xtype: 'xdatefield'
                             ,fieldLabel: _('eventsx.event.startdate')
@@ -194,6 +194,44 @@ EventsX.window.Event = function(config) {
                     ]
                 },{
                     title: _('eventsx.event.location')
+                    ,items: [{
+                            xtype: 'textfield'
+                            ,fieldLabel: _('eventsx.event.location')
+                            ,name: 'location'
+                            ,width: 300
+                            ,allowBlank: true
+                        },{
+                            xtype: 'textfield'
+                            ,fieldLabel: _('eventsx.event.location.street')
+                            ,name: 'street'
+                            ,width: 300
+                            ,allowBlank: true
+                        },{
+                            xtype: 'textfield'
+                            ,fieldLabel: _('eventsx.event.location.pc')
+                            ,name: 'pc'
+                            ,width: 300
+                            ,allowBlank: true
+                        },{
+                            xtype: 'textfield'
+                            ,fieldLabel: _('eventsx.event.location.city')
+                            ,name: 'city'
+                            ,width: 300
+                            ,allowBlank: true
+                        },{
+                            xtype: 'textfield'
+                            ,fieldLabel: _('eventsx.event.location.country')
+                            ,name: 'country'
+                            ,width: 300
+                            ,allowBlank: true
+                        },{
+                            xtype: 'textfield'
+                            ,fieldLabel: _('eventsx.event.location.website')
+                            ,name: 'website'
+                            ,width: 300
+                            ,allowBlank: true
+                        }
+                    ]
                 }]
             }]
         }]

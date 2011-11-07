@@ -7,6 +7,12 @@
         <field key="description" dbtype="text" phptype="string" null="false" default=""/>
         <field key="startdate" dbtype="date" phptype="date" null="null"/>
         <field key="enddate" dbtype="date" phptype="date" null="null"/>
+        <field key="location" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="street" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="pc" dbtype="varchar" precision="10" phptype="string" null="false" default=""/>
+        <field key="city" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="country" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="website" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
     </object>
 
 </model>

@@ -9,6 +9,12 @@ $xpdo_meta_map['evxEvent']= array (
     'description' => '',
     'startdate' => NULL,
     'enddate' => NULL,
+    'location' => '',
+    'street' => '',
+    'pc' => '',
+    'city' => '',
+    'country' => '',
+    'website' => '',
   ),
   'fieldMeta' => 
   array (
@@ -46,6 +52,54 @@ $xpdo_meta_map['evxEvent']= array (
       'dbtype' => 'date',
       'phptype' => 'date',
       'null' => true,
+    ),
+    'location' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '255',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
+    ),
+    'street' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '255',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
+    ),
+    'pc' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '10',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
+    ),
+    'city' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '255',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
+    ),
+    'country' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '255',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
+    ),
+    'website' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '255',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
     ),
   ),
 );
