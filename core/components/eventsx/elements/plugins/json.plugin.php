@@ -16,23 +16,23 @@ if ($modx->event->name == 'OnPageNotFound' && strpos($_SERVER['REQUEST_URI'], 'e
                  "startdate <= '$enddate' AND  enddate >= '$startdate'"
               )
     );
-    
-    $list = array();
+
+    $eventDays = array();
+
     $events = $modx->getCollection('evxEvent', $c);
-    foreach($events as $event) {
+    foreach($events as $event)
+    {
         $event = $event->toArray();
-        $days = array();
-        for($i=1; $i <= $daysInMonth; $i++) {
+        for($i=1; $i <= $daysInMonth; $i++)
+        {
             $dayTimestamp = mktime(0, 0, 0, $month, $i, $year);
-            if($event['startTime'] <= $dayTimestamp && $event['endTime'] >= $dayTimestamp) {
-                $days[] = $i;
+            if($event['startTime'] <= $dayTimestamp && $event['endTime'] >= $dayTimestamp)
+            {
+                $eventDays[$i][] = $event;
             }
         }
-        $event['days'] = $days; //days of this month the event should be listed
-
-        $list[] = $event;
     }
 
-    echo $modx->toJSON($list);
+    echo $modx->toJSON($eventDays);
     exit;
 }

@@ -1,0 +1,36 @@
+#calendar td, #calendar th {
+	border-left: 1px solid #999;
+	border-bottom: 1px solid #999;
+	width: 120px;
+	padding: 10px 0;
+	text-align: center;
+}
+
+#calendar table {
+	border-right: 1px solid #999;
+	border-top: 1px solid #999;
+}
+
+#calendar th {
+	background: #666;
+	color: #fff;
+}
+
+#calendar .other-month {
+	background: #eee;
+}
+
+#calendar .hasEvents {
+    color: red;
+    position: relative;
+}
+
+#calendar .hasEvents div {
+    display: none;
+    background: #FFF;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 150px;
+    height: 150px;
+}

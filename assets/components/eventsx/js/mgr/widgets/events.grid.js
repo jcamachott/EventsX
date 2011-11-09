@@ -6,7 +6,7 @@ EventsX.grid.Events = function(config) {
         ,baseParams: {
             action: 'mgr/event/getlist'
         }
-        ,fields: ['id', 'active', 'name', 'description', {name: 'startdate', type: 'date', dateFormat: 'Y-m-d'}, {name: 'enddate', type: 'date', dateFormat: 'Y-m-d'}]
+        ,fields: ['id', 'active', 'name', 'description', {name: 'startdate', type: 'date', dateFormat: 'Y-m-d'}, {name: 'enddate', type: 'date', dateFormat: 'Y-m-d'}, 'location', 'street', 'pc', 'city', 'country', 'website']
         ,paging: true
         ,border: false
         ,frame: false
