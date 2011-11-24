@@ -1,7 +1,13 @@
 <?php
-if ($modx->event->name == 'OnPageNotFound' && strpos($_SERVER['REQUEST_URI'], 'eventsxJSON')) {
+//get regex escaped name/url of events page without /
+$eventsPageRegex = preg_quote(trim($modx->makeUrl($modx->getOption('evxEventsPage', null, 1)), '/'));
 
+if ($modx->event->name == 'OnPageNotFound' && preg_match('/eventsxJSON\?.*$/', $_SERVER['REQUEST_URI']))
+{
     $modx->getService('eventsx','EventsX',$modx->getOption('eventsx.core_path',null,$modx->getOption('core_path').'components/eventsx/').'model/eventsx/',$scriptProperties);
+
+    //calendar item template
+    $eventTpl = $modx->getOption('evxEventCalendarTpl', null, 'evxEventCalendarTpl');
 
     $month = $modx->getOption('month', $_GET, date('m'));
     $year = $modx->getOption('year', $_GET, date('Y'));
@@ -13,6 +19,7 @@ if ($modx->event->name == 'OnPageNotFound' && strpos($_SERVER['REQUEST_URI'], 'e
     $c = $modx->newQuery('evxEvent');
     $c->select('id, name, UNIX_TIMESTAMP(startdate) AS startTime, UNIX_TIMESTAMP(enddate) AS endTime');
     $c->where(array(
+                'active' => 1,
                  "startdate <= '$enddate' AND  enddate >= '$startdate'"
               )
     );
@@ -23,6 +30,8 @@ if ($modx->event->name == 'OnPageNotFound' && strpos($_SERVER['REQUEST_URI'], 'e
     foreach($events as $event)
     {
         $event = $event->toArray();
+        $event['url'] = $modx->makeUrl($modx->getOption('evxEventsPage', null, 1)).urlencode($event['name']).'/'.$event['id'];
+        $event['html'] = $modx->getChunk($eventTpl, $event);
         for($i=1; $i <= $daysInMonth; $i++)
         {
             $dayTimestamp = mktime(0, 0, 0, $month, $i, $year);
@@ -35,4 +44,7 @@ if ($modx->event->name == 'OnPageNotFound' && strpos($_SERVER['REQUEST_URI'], 'e
 
     echo $modx->toJSON($eventDays);
     exit;
+}
+elseif ($modx->event->name == 'OnPageNotFound' && preg_match('/'.$eventsPageRegex.'\/.*\/[0-9]+$/', $_SERVER['REQUEST_URI'])) {
+    $modx->sendForward($modx->getOption('evxEventPage'));
 }

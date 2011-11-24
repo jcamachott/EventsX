@@ -14,7 +14,7 @@
 		$.extend(opts, params);
 		
 		var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-		var dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+		var dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 		month = i = parseInt(opts.month);
 		year = parseInt(opts.year);
 		var m = 0;
@@ -38,17 +38,12 @@
 			
         var prev_days = getDaysInMonth(month,year);
         var firstDayDate=new Date(year,month,1);
-        var firstDay=firstDayDate.getDay()-1;
+        var firstDay=firstDayDate.getDay();
 			
         var prev_m = month == 0 ? 11 : month-1;
         var prev_y = prev_m == 11 ? year - 1 : year;
         var prev_days = getDaysInMonth(prev_m, prev_y);
         firstDay = (firstDay == 0 && firstDayDate) ? 7 : firstDay;
-
-        //sunday should be day 7 (index 6)
-        if(firstDay == -1) {
-            firstDay = 6;
-        }
 	
         var i = 0;
         for (j=0;j<42;j++) {
@@ -84,7 +79,7 @@
             var todayEvents = '';
 
             for(i=0; i < monthEvents[day].length; i++) {
-                todayEvents += monthEvents[day][i].html;
+                todayEvents += '<a href="'+ monthEvents[day][i].url+'">'+monthEvents[day][i].name+'</a>';
             }
             
             return '<div class="day hasEvents">'+day+'<div class="events">'+todayEvents+'</div></div>';
