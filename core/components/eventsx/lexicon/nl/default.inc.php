@@ -7,6 +7,7 @@
  */
 $_lang['eventsx'] = 'EventsX';
 $_lang['eventsx.desc'] = 'Beheer evenementen';
+
 $_lang['eventsx.event'] = 'Evenement';
 $_lang['eventsx.event.new'] = 'Nieuw evenement';
 $_lang['eventsx.event.update'] = 'Bewerk evenement';
