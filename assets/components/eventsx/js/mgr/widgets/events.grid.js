@@ -67,8 +67,8 @@ Ext.extend(EventsX.grid.Events,MODx.grid.Grid,{
         });
         this.EventWindow.show(e.target);
         this.EventWindow.setTitle(_('eventsx.event.new'));
-        Ext.getCmp('eventsx-window-event-form-tabs').setActiveTab(0);
-        Ext.getCmp('eventsx-window-event-form').form.reset();
+        this.EventWindow.setActiveTab(0);
+        this.EventWindow.form.reset();
     }
     ,updateEvent: function(btn,e) {
         this.EventWindow = MODx.load({
@@ -79,9 +79,8 @@ Ext.extend(EventsX.grid.Events,MODx.grid.Grid,{
         });
         this.EventWindow.show(e.target);
         this.EventWindow.setTitle(_('eventsx.event.update'));
-        Ext.getCmp('eventsx-window-event-form-tabs').setActiveTab(0);
-        Ext.getCmp('eventsx-window-event-form').form.reset();
-        Ext.getCmp('eventsx-window-event-form').form.setValues(this.menu.record);
+        this.EventWindow.reset();
+        this.EventWindow.setValues(this.menu.record);
         if (typeof Tiny != 'undefined') { MODx.loadRTE('eventdescription'); }
     }
     ,removeEvent: function() {
@@ -108,131 +107,112 @@ EventsX.window.Event = function(config) {
         id: 'eventsx-window-event'
         ,title: _('eventsx.event.new')
         ,url: EventsX.config.connectorUrl
-        ,keys: []
+        ,autoHeight: true
+        ,baseParams: {
+            action: 'mgr/event/update'
+        }
         ,width: 750
         ,closeAction: 'close'
-        ,buttons: [{
-            process: 'submit',
-            text: _('save'),
-            handler: function() {
-                frm = Ext.getCmp('eventsx-window-event-form').form;
-
-                if (frm.isValid()) {
-                    frm.submit({
-                        waitMsg: _('saving'),
-                        success: function(form,action) {
-                            Ext.getCmp('eventsx-window-event').close();
-                            Ext.getCmp('eventsx-grid-events').refresh();
-                        },
-                        failure: function(form,action) {
-                            Ext.MessageBox.alert(_('error'),_('eventsx.error.undefined'));
-                        }
-                    })
-                }
-                else {
-                    Ext.MessageBox.alert(_('error'),_('eventsx.error.missingrequired'));
-                }
+        ,fields: [{
+            xtype: 'modx-tabs'
+            ,listeners: {
+                'tabchange': function() {
+                    this.syncSize();
+                },
+                scope: this
             }
-        }]
-        ,items: [{
-            xtype: 'form'
-            ,url: EventsX.config.connectorUrl
-            ,baseParams: {
-                action: 'mgr/event/update'
-            }
-            ,fileUpload: true
+            ,autoHeight: true
+            ,deferredRender: false
             ,forceLayout: true
-            ,id: 'eventsx-window-event-form'
+            ,width: '98%'
+            ,borderStyle: 'padding: 10px 10px 10px 10px;'
+            ,border: true
+            ,defaults: {
+                border: false
+                ,labelWidth: 100
+                ,autoHeight: true
+                ,bodyStyle: 'padding: 5px 8px 5px 5px;'
+                ,layout: 'form'
+                ,deferredRender: false
+                ,forceLayout: true
+            }
             ,items: [{
-                xtype: 'modx-tabs'
-                ,id: 'eventsx-window-event-form-tabs'
-                ,defaults: {
-                    layout: 'form'
-                    ,labelWidth: 100
-                    ,autoHeight: true
-                    ,hideMode: 'offsets'
-                    ,bodyStyle: 'padding: 15px'
-                    ,border: false
-                    ,xtype: 'modx-panel'
-                }
+                title: _('eventsx.event')
                 ,items: [{
-                    title: _('eventsx.event')
-                    ,items: [{
-                            xtype: 'hidden'
-                            ,name: 'id'
-                        },{
-                            xtype: 'xcheckbox'
-                            ,fieldLabel: _('eventsx.event.active')
-                            ,name: 'active'
-                            ,inputValue: 1
-                        },{
-                            xtype: 'textfield'
-                            ,fieldLabel: _('eventsx.event.name')
-                            ,name: 'name'
-                            ,width: 300
-                            ,allowBlank: false
-                        },{
-                            xtype: 'textarea'
-                            ,id: 'eventdescription-'+this.ident
-                            ,fieldLabel: _('eventsx.event.description')
-                            ,name: 'description'
-                            ,width: 300
-                            ,allowBlank: true
-                        },{
-                            xtype: 'xdatefield'
-                            ,fieldLabel: _('eventsx.event.startdate')
-                            ,name: 'startdate'
-                            ,allowBlank: false
-                            ,format:  MODx.config.manager_date_format
-                        },{
-                            xtype: 'xdatefield'
-                            ,fieldLabel: _('eventsx.event.enddate')
-                            ,name: 'enddate'
-                            ,allowBlank: false
-                            ,format: MODx.config.manager_date_format
-                        }
-                    ]
-                },{
-                    title: _('eventsx.event.location')
-                    ,items: [{
-                            xtype: 'textfield'
-                            ,fieldLabel: _('eventsx.event.location')
-                            ,name: 'location'
-                            ,width: 300
-                            ,allowBlank: true
-                        },{
-                            xtype: 'textfield'
-                            ,fieldLabel: _('eventsx.event.location.street')
-                            ,name: 'street'
-                            ,width: 300
-                            ,allowBlank: true
-                        },{
-                            xtype: 'textfield'
-                            ,fieldLabel: _('eventsx.event.location.pc')
-                            ,name: 'pc'
-                            ,width: 300
-                            ,allowBlank: true
-                        },{
-                            xtype: 'textfield'
-                            ,fieldLabel: _('eventsx.event.location.city')
-                            ,name: 'city'
-                            ,width: 300
-                            ,allowBlank: true
-                        },{
-                            xtype: 'textfield'
-                            ,fieldLabel: _('eventsx.event.location.country')
-                            ,name: 'country'
-                            ,width: 300
-                            ,allowBlank: true
-                        },{
-                            xtype: 'textfield'
-                            ,fieldLabel: _('eventsx.event.location.website')
-                            ,name: 'website'
-                            ,width: 300
-                            ,allowBlank: true
-                        }
-                    ]
-                }]
+                        xtype: 'hidden'
+                        ,name: 'id'
+                    },{
+                        xtype: 'xcheckbox'
+                        ,fieldLabel: _('eventsx.event.active')
+                        ,name: 'active'
+                        ,inputValue: 1
+                    },{
+                        xtype: 'textfield'
+                        ,fieldLabel: _('eventsx.event.name')
+                        ,name: 'name'
+                        ,width: 300
+                        ,allowBlank: false
+                    },{
+                        xtype: 'textarea'
+                        ,id: 'eventdescription-'+this.ident
+                        ,fieldLabel: _('eventsx.event.description')
+                        ,name: 'description'
+                        ,width: 300
+                        ,allowBlank: true
+                    },{
+                        xtype: 'xdatefield'
+                        ,fieldLabel: _('eventsx.event.startdate')
+                        ,name: 'startdate'
+                        ,allowBlank: false
+                        ,format:  MODx.config.manager_date_format
+                    },{
+                        xtype: 'xdatefield'
+                        ,fieldLabel: _('eventsx.event.enddate')
+                        ,name: 'enddate'
+                        ,allowBlank: false
+                        ,format: MODx.config.manager_date_format
+                    }
+                ]
+            },{
+                title: _('eventsx.event.location')
+                ,items: [{
+                        xtype: 'textfield'
+                        ,fieldLabel: _('eventsx.event.location')
+                        ,name: 'location'
+                        ,width: 300
+                        ,allowBlank: true
+                    },{
+                        xtype: 'textfield'
+                        ,fieldLabel: _('eventsx.event.location.street')
+                        ,name: 'street'
+                        ,width: 300
+                        ,allowBlank: true
+                    },{
+                        xtype: 'textfield'
+                        ,fieldLabel: _('eventsx.event.location.pc')
+                        ,name: 'pc'
+                        ,width: 300
+                        ,allowBlank: true
+                    },{
+                        xtype: 'textfield'
+                        ,fieldLabel: _('eventsx.event.location.city')
+                        ,name: 'city'
+                        ,width: 300
+                        ,allowBlank: true
+                    },{
+                        xtype: 'textfield'
+                        ,fieldLabel: _('eventsx.event.location.country')
+                        ,name: 'country'
+                        ,width: 300
+                        ,allowBlank: true
+                    },{
+                        xtype: 'textfield'
+                        ,fieldLabel: _('eventsx.event.location.website')
+                        ,name: 'website'
+                        ,width: 300
+                        ,allowBlank: true
+                    }
+                ]
             }]
         }]
     });
