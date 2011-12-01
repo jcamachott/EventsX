@@ -67,8 +67,7 @@ Ext.extend(EventsX.grid.Events,MODx.grid.Grid,{
         });
         this.EventWindow.show(e.target);
         this.EventWindow.setTitle(_('eventsx.event.new'));
-        this.EventWindow.setActiveTab(0);
-        this.EventWindow.form.reset();
+        this.EventWindow.reset();
     }
     ,updateEvent: function(btn,e) {
         this.EventWindow = MODx.load({
@@ -79,7 +78,7 @@ Ext.extend(EventsX.grid.Events,MODx.grid.Grid,{
         });
         this.EventWindow.show(e.target);
         this.EventWindow.setTitle(_('eventsx.event.update'));
-        this.EventWindow.reset();
+        //this.EventWindow.reset();
         this.EventWindow.setValues(this.menu.record);
         if (typeof Tiny != 'undefined') { MODx.loadRTE('eventdescription'); }
     }
@@ -104,8 +103,7 @@ EventsX.window.Event = function(config) {
     config = config || {};
     this.ident = config.ident || Ext.id();
     Ext.applyIf(config,{
-        id: 'eventsx-window-event'
-        ,title: _('eventsx.event.new')
+        title: _('eventsx.event.new')
         ,url: EventsX.config.connectorUrl
         ,autoHeight: true
         ,baseParams: {

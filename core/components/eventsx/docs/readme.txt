@@ -1,5 +1,5 @@
 #############################################################
-#             EventsX: events lis/calendar                  #
+#             EventsX: events list/calendar                 #
 #                                                           #
 # Version: 0.1.0 alpha                                      #
 # Released: 2011-11-30                                      #

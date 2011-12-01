@@ -2,17 +2,17 @@
 /**
  * Adds modActions and modMenus into package
  *
- * @package bannerx
+ * @package eventsx
  * @subpackage build
  */
 $action= $modx->newObject('modAction');
 $action->fromArray(array(
     'id' => 1,
-    'namespace' => 'bannerx',
+    'namespace' => 'eventsx',
     'parent' => 0,
     'controller' => 'index',
     'haslayout' => 1,
-    'lang_topics' => 'bannerx:default,file',
+    'lang_topics' => 'eventsx:default,file',
     'assets' => '',
 ),'',true,true);
 
@@ -20,8 +20,8 @@ $action->fromArray(array(
 $menu= $modx->newObject('modMenu');
 $menu->fromArray(array(
     'parent' => 'components',
-    'text' => 'bannerx',
-    'description' => 'bannerx.desc',
+    'text' => 'eventsx',
+    'description' => 'eventsx.desc',
     'icon' => '',
     'menuindex' => '0',
     'params' => '',
