@@ -30,7 +30,7 @@ function calendar() {
             events: monthEvents
        });
 
-       $('.hasevents').hover(
+       $('.hasEvents').hover(
            function(){
                 $(this).find('div').show();
            },
