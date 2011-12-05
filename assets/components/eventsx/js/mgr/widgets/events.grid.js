@@ -48,11 +48,11 @@ EventsX.grid.Events = function(config) {
 Ext.extend(EventsX.grid.Events,MODx.grid.Grid,{
     getMenu: function() {
         var m = [{
-                text: _('eventsx.event.remove')
-                ,handler: this.removeEvent
-            },{
                 text: _('eventsx.event.update')
                 ,handler: this.updateEvent
+            },{
+                    text: _('eventsx.event.remove')
+                    ,handler: this.removeEvent
             }
         ];
         this.addContextMenuItem(m);
