@@ -4,12 +4,14 @@
 		
 		var now   = new Date();
 		var thismonth = now.getMonth();
-		var thisyear  = now.getYear() + 1900;
+		var thisyear  = now.getFullYear();
 		
 		var opts = {
 			month: thismonth,
 			year: thisyear
 		};
+
+
 		
 		$.extend(opts, params);
 		

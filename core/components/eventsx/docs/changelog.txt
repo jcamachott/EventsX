@@ -1,0 +1,12 @@
+EventsX 0.1.0 Alpha2
+====================================
+- Fixed hasEvents typo in calendar.js
+- Russian translation added
+- Small Calendar CSS bug fix (z-index)
+- Added all event fields to JSON data
+- Changed order of context menu (update/remove)
+- Changed relative grid column size to give name more space
+
+EventsX 0.1.0 Alpha
+====================================
+- Initial release

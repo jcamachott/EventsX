@@ -39,7 +39,7 @@ $modx->setLogTarget(XPDO_CLI_MODE ? 'ECHO' : 'HTML');
 
 $modx->loadClass('transport.modPackageBuilder','',false, true);
 $builder = new modPackageBuilder($modx);
-$builder->createPackage('eventsx','0.1.0','alpha');
+$builder->createPackage('eventsx','0.1.0','alpha2');
 $builder->registerNamespace('eventsx',false,true,'{core_path}components/eventsx/');
 
 /* load action/menu */
@@ -123,7 +123,8 @@ $builder->putVehicle($vehicle);
 
 $builder->setPackageAttributes(array(
     'readme' => file_get_contents($sources['docs'] . 'readme.txt'),
-    'license' => file_get_contents($sources['docs'] . 'license.txt')
+    'license' => file_get_contents($sources['docs'] . 'license.txt'),
+    'changelog' => file_get_contents($sources['docs'] . 'changelog.txt')
 ));
 
 $builder->pack();
