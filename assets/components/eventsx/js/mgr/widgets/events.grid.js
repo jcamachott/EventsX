@@ -17,11 +17,11 @@ EventsX.grid.Events = function(config) {
             header: _('id')
             ,dataIndex: 'id'
             ,sortable: true
-            ,width: 10
+            ,width: 1
         },{
             header: _('eventsx.event.active')
             ,dataIndex: 'active'
-            ,width: 20
+            ,width: 1
             ,renderer: function(value) {
                 return "<input disabled='disabled' type='checkbox'" + (value ? "checked='checked'" : "") + " />";
             }
@@ -29,14 +29,17 @@ EventsX.grid.Events = function(config) {
             header: _('eventsx.event.startdate')
             ,dataIndex: 'startdate'
             ,renderer:Ext.util.Format.dateRenderer(MODx.config.manager_date_format)
+            ,width: 2
         },{
             header: _('eventsx.event.enddate')
             ,dataIndex: 'enddate'
             ,renderer:Ext.util.Format.dateRenderer(MODx.config.manager_date_format)
+            ,width: 2
         },{
             header: _('eventsx.event.name')
             ,dataIndex: 'name'
             ,sortable: true
+            ,width: 10
         }]
         ,tbar: [{
             text: _('eventsx.event.new')
