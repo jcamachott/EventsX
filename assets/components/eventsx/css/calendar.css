@@ -29,6 +29,7 @@
     display: none;
     background: #FFF;
     position: absolute;
+    z-index: 1000;
     left: 10px;
     top: 10px;
     width: 150px;

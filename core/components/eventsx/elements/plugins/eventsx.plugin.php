@@ -27,7 +27,7 @@ if ($modx->event->name == 'OnPageNotFound' && preg_match('/'.$jsonURI.'\?.*$/', 
     $daysInMonth = date('t',mktime(0, 0, 0, $month, 1, $year));
 
     $c = $modx->newQuery('evxEvent');
-    $c->select('id, name, UNIX_TIMESTAMP(startdate) AS startTime, UNIX_TIMESTAMP(enddate) AS endTime');
+    $c->select('id, name, description, UNIX_TIMESTAMP(startdate) AS startTime, UNIX_TIMESTAMP(enddate) AS endTime, location, street, pc, city, country, website');
     $c->where(
         array(
             'active' => 1,
