@@ -11,7 +11,7 @@ $limit = $modx->getOption('limit', $scriptProperties, 5);
 $tpl = $modx->getOption('tpl', $scriptProperties, 'evxEventTpl');
 
 $c = $modx->newQuery('evxEvent');
-$c->andCondition(array('active' => 1, 'startdate >= NOW()'));
+$c->andCondition(array('active' => 1, "startdate >= '".date('Y-m-d')."'"));
 $c->limit($limit);
 $c->sortby('startdate', 'ASC');
 $events = $modx->getCollection('evxEvent', $c);
