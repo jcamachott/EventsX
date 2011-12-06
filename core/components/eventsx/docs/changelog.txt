@@ -1,4 +1,4 @@
-EventsX 0.1.0 Alpha3
+EventsX 0.1.0 Alpha4
 ====================================
 - EventsX snippet now also sets [[+classes]] placeholder
 
