@@ -39,7 +39,7 @@ $modx->setLogTarget(XPDO_CLI_MODE ? 'ECHO' : 'HTML');
 
 $modx->loadClass('transport.modPackageBuilder','',false, true);
 $builder = new modPackageBuilder($modx);
-$builder->createPackage('eventsx','0.1.0','alpha3');
+$builder->createPackage('eventsx','0.1.0','alpha4');
 $builder->registerNamespace('eventsx',false,true,'{core_path}components/eventsx/');
 
 /* load action/menu */

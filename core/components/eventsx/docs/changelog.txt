@@ -1,5 +1,9 @@
 EventsX 0.1.0 Alpha3
 ====================================
+- EventsX snippet now also sets [[+classes]] placeholder
+
+EventsX 0.1.0 Alpha3
+====================================
 - EventsX snippet now also shows events starting today
 
 EventsX 0.1.0 Alpha2
