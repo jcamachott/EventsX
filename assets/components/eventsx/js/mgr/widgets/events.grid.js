@@ -6,7 +6,7 @@ EventsX.grid.Events = function(config) {
         ,baseParams: {
             action: 'mgr/event/getlist'
         }
-        ,fields: ['id', 'active', 'name', 'description', {name: 'startdate', type: 'date', dateFormat: 'Y-m-d'}, {name: 'enddate', type: 'date', dateFormat: 'Y-m-d'}, 'location', 'street', 'pc', 'city', 'country', 'website']
+        ,fields: ['id', 'active', 'name', 'introtext', 'description', {name: 'startdate', type: 'date', dateFormat: 'Y-m-d'}, {name: 'enddate', type: 'date', dateFormat: 'Y-m-d'}, 'location', 'street', 'pc', 'city', 'region', 'country', 'website']
         ,paging: true
         ,border: false
         ,frame: false
@@ -155,6 +155,12 @@ EventsX.window.Event = function(config) {
                         ,allowBlank: false
                     },{
                         xtype: 'textarea'
+                        ,fieldLabel: _('eventsx.event.introtext')
+                        ,name: 'introtext'
+                        ,width: 300
+                        ,allowBlank: true
+                    },{
+                        xtype: 'textarea'
                         ,id: 'eventdescription-'+this.ident
                         ,fieldLabel: _('eventsx.event.description')
                         ,name: 'description'
@@ -198,6 +204,12 @@ EventsX.window.Event = function(config) {
                         xtype: 'textfield'
                         ,fieldLabel: _('eventsx.event.location.city')
                         ,name: 'city'
+                        ,width: 300
+                        ,allowBlank: true
+                    },{
+                        xtype: 'textfield'
+                        ,fieldLabel: _('eventsx.event.location.region')
+                        ,name: 'region'
                         ,width: 300
                         ,allowBlank: true
                     },{

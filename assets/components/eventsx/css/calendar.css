@@ -23,6 +23,7 @@
 #calendar .hasEvents {
     color: red;
     position: relative;
+    cursor: pointer;
 }
 
 #calendar .hasEvents div {

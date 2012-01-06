@@ -4,6 +4,7 @@
     <object class="evxEvent" table="eventsx_events" extends="xPDOSimpleObject">
         <field key="active" dbtype="int" precision="1" phptype="integer" null="false" default="0"/>
         <field key="name" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="introtext" dbtype="text" phptype="string" null="false" default=""/>
         <field key="description" dbtype="text" phptype="string" null="false" default=""/>
         <field key="startdate" dbtype="date" phptype="date" null="null"/>
         <field key="enddate" dbtype="date" phptype="date" null="null"/>
@@ -11,6 +12,7 @@
         <field key="street" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
         <field key="pc" dbtype="varchar" precision="10" phptype="string" null="false" default=""/>
         <field key="city" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="region" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
         <field key="country" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
         <field key="website" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
     </object>

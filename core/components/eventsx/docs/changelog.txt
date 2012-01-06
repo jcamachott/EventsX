@@ -1,3 +1,12 @@
+EventsX 0.1.0 Alpha5
+====================================
+- EventsX snippet now also sets [[+idx]] placeholder (starting at 1)
+- [css] Added cursor:pointer to #calendar .hasEvents
+- New region field
+- New introtext field
+- Fixed typo (eventsPageRegex) in plugin
+- Now shows upcoming events until enddate (was startdate)
+
 EventsX 0.1.0 Alpha4
 ====================================
 - EventsX snippet now also sets [[+classes]] placeholder

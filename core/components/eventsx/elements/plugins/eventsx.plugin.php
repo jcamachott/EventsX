@@ -58,7 +58,7 @@ if ($modx->event->name == 'OnPageNotFound' && preg_match('/'.$jsonURI.'\?.*$/', 
 }
 
 //go to event page
-elseif ($modx->event->name == 'OnPageNotFound' && preg_match('/'.$eventPageRegex.'\/.*\/[0-9]+$/', $_SERVER['REQUEST_URI']))
+elseif ($modx->event->name == 'OnPageNotFound' && preg_match('/'.$eventsPageRegex.'\/.*\/[0-9]+$/', $_SERVER['REQUEST_URI']))
 {
     $modx->sendForward($eventPage);
 }
