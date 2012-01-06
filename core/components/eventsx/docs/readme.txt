@@ -1,11 +1,10 @@
 #############################################################
 #             EventsX: events list/calendar                 #
 #                                                           #
-# Version: 0.1.0 alpha                                      #
-# Released: 2011-11-30                                      #
+# Version: 0.1.0 beta                                       #
+# Released: 2012-01-06                                      #
 #                                                           #
 # Author: Jeroen Kenters Web Development / www.kenters.com  #
-# German translation by: Anselm Hannemann, anselm.novolo.de #
 #                                                           #
 # License: GNU GENERAL PUBLIC LICENSE, Version 2            #
 #############################################################
@@ -27,6 +26,7 @@ calendar and/or upcoming events list.
   - english
   - dutch
   - german (thanks to Anselm Hannemann)
+  - russian
 
 ==========================================
  Upcoming versions (TODO)
@@ -37,7 +37,7 @@ calendar and/or upcoming events list.
 ==========================================
  Requirements
 ==========================================
-* MODX Revolution (tested with 2.1.3)
+* MODX Revolution (tested with 2.1.3+)
 * jQuery for the calendar
   (you can also create your own JSON based calendar)
 
@@ -118,7 +118,7 @@ calendar and/or upcoming events list.
     <p>End date: [[+event.enddate:strtotime:date=`%d-%m-%Y`]]</p>
     [[+description]]<!-- Description is a TinyMCE field by default, so no <p> here -->
     <h2>Location</h2>
-    <p>[[+location]]<br />, [[+street]]<br />, [[+pc]]<br />, [[+city]]<br />, [[+country]]</p>
-    <p><a href="[[+website]]">Visit website</a></p>
+    <p>[[+event.location]]<br /> [[+event.street]]<br /> [[+event.pc]]<br /> [[+event.city]]<br /> [[+event.region]]<br /> [[+event.country]]</p>
+    <p><a href="[[+event.website]]">Visit website</a></p>
 </body>
 </html>

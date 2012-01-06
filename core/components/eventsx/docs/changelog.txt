@@ -1,6 +1,6 @@
 EventsX 0.1.0 Alpha5
 ====================================
-- EventsX snippet now also sets [[+idx]] placeholder (starting at 1)
+- EventsX snippet now also sets [[+idx]] index placeholder (starting at 1)
 - [css] Added cursor:pointer to #calendar .hasEvents
 - New region field
 - New introtext field
