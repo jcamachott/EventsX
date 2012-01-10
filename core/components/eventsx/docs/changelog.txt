@@ -1,4 +1,8 @@
-EventsX 0.1.0 Alpha5
+EventsX 0.1.0 Beta2
+====================================
+- eventsPageRegex now gets escaped properly
+
+EventsX 0.1.0 Beta
 ====================================
 - EventsX snippet now also sets [[+idx]] index placeholder (starting at 1)
 - [css] Added cursor:pointer to #calendar .hasEvents

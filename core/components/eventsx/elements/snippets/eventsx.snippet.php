@@ -4,8 +4,10 @@ $modx->getService('eventsx','EventsX',$modx->getOption('eventsx.core_path',null,
 //get id of events (overview) page
 $eventsPage = $modx->getOption('evxEventsPage', null, 1);
 
-//max number over events shown
-$limit = $modx->getOption('limit', $scriptProperties, 5);
+//getPage setings
+$limit = $modx->getOption('limit', $scriptProperties, 10);
+$offset = $modx->getOption('offset', $scriptProperties, 0);
+$totalVar = $modx->getOption('totalVar', $scriptProperties, 'total');
 
 //event chunk
 $tpl = $modx->getOption('tpl', $scriptProperties, 'evxEventTpl');
@@ -17,7 +19,11 @@ $evenClass = $modx->getOption('eventClass', $scriptProperties, 'even');
 
 $c = $modx->newQuery('evxEvent');
 $c->andCondition(array('active' => 1, "enddate >= '".date('Y-m-d')."'"));
-$c->limit($limit);
+
+//set placeholder for getPage
+$modx->setPlaceholder($totalVar, $modx->getCount('evxEvent', $c));
+
+$c->limit($limit, $offset);
 $c->sortby('startdate', 'ASC');
 $events = $modx->getCollection('evxEvent', $c);
 

@@ -6,7 +6,7 @@ $eventPage = $modx->getOption('evxEventPage', null, 1);
 $eventsPage = $modx->getOption('evxEventsPage', null, 1);
 
 //get regex escaped name/url of events (overview) page without /
-$eventsPageRegex = preg_quote(trim($modx->makeUrl($eventsPage), '/'));
+$eventsPageRegex = preg_quote(trim($modx->makeUrl($eventsPage), '/'), '/');
 
 //calendar item template
 $eventTpl = $modx->getOption('evxEventCalendarTpl', null, 'evxEventCalendarTpl');
@@ -62,3 +62,5 @@ elseif ($modx->event->name == 'OnPageNotFound' && preg_match('/'.$eventsPageRege
 {
     $modx->sendForward($eventPage);
 }
+
+$modx->log(MODX::LOG_LEVEL_ERROR, $eventsPageRegex);

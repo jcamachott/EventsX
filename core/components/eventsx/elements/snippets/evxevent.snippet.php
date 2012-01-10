@@ -6,7 +6,7 @@ $eventsPage = $modx->getOption('evxEventsPage', $scriptProperties, 1);
 
 //get regex escaped name/url of events (overview) page without /
 //events are below overiew page. e.a. /events/event-name/10
-$eventsPageRegex = preg_quote(trim($modx->makeUrl($eventsPage), '/'));
+$eventsPageRegex = preg_quote(trim($modx->makeUrl($eventsPage), '/'), '/');
 
 //single event
 if(preg_match('/'.$eventsPageRegex.'\/.*\/[0-9]+$/', $_SERVER['REQUEST_URI']))
