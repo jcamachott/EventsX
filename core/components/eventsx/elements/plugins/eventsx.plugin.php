@@ -62,5 +62,3 @@ elseif ($modx->event->name == 'OnPageNotFound' && preg_match('/'.$eventsPageRege
 {
     $modx->sendForward($eventPage);
 }
-
-$modx->log(MODX::LOG_LEVEL_ERROR, $eventsPageRegex);

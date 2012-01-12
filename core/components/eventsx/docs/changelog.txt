@@ -1,5 +1,6 @@
 EventsX 0.1.0 Beta2
 ====================================
+- getPage compatible
 - eventsPageRegex now gets escaped properly
 
 EventsX 0.1.0 Beta
