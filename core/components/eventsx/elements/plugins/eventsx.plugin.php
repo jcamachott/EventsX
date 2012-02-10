@@ -41,7 +41,7 @@ if ($modx->event->name == 'OnPageNotFound' && preg_match('/'.$jsonURI.'\?.*$/', 
     foreach($events as $event)
     {
         $event = $event->toArray();
-        $event['url'] = $modx->makeUrl($eventsPage).urlencode($event['name']).'/'.$event['id'];
+        $event['url'] = $modx->makeUrl($eventsPage).'/'.urlencode($event['name']).'/'.$event['id'];
         $event['html'] = $modx->getChunk($eventTpl, $event);
         for($i=1; $i <= $daysInMonth; $i++)
         {
