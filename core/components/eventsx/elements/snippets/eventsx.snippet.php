@@ -34,7 +34,7 @@ foreach($events as $event)
     $event = $event->toArray();
     $event['idx'] = $i;
     $event['classes'] = $eventClass.' '.($i & 1 ? $oddClass : $evenClass);
-    $event['url'] = $modx->makeUrl($eventsPage).urlencode($event['name']).'/'.$event['id'];
+    $event['url'] = $modx->makeUrl($eventsPage).'/'.urlencode($event['name']).'/'.$event['id'];
     $output .= $modx->getChunk($tpl, $event);
     $i++;
 }
